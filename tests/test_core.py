@@ -5,8 +5,8 @@ from typing import Any
 
 import pytest
 
-from syncer import can_syncify
-from syncer.core import syncify
+from noaio import can_syncify
+from noaio.core import syncify
 
 
 async def await_fn() -> int:

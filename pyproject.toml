@@ -1,5 +1,5 @@
 [project]
-name = "syncer"
+name = "noaio"
 version = "1.0.0"
 description = "Run (some) coroutine functions synchronously."
 readme = "README.md"
@@ -22,9 +22,9 @@ requires-python = ">=3.10"
 dependencies = []
 
 [project.urls]
-Homepage = "https://github.com/thearchitector/syncer"
-Repository = "https://github.com/thearchitector/syncer.git"
-Issues = "https://github.com/thearchitector/syncer/issues"
+Homepage = "https://github.com/thearchitector/noaio"
+Repository = "https://github.com/thearchitector/noaio.git"
+Issues = "https://github.com/thearchitector/noaio/issues"
 
 [dependency-groups]
 dev = [
@@ -38,7 +38,7 @@ dev = [
 
 [tool.pytest.ini_options]
 testpaths = ["tests/"]
-addopts = '-ra -vv --cov=syncer --cov-report=term-missing'
+addopts = '-ra -vv --cov=noaio --cov-report=term-missing'
 asyncio_default_fixture_loop_scope = "session"
 asyncio_default_test_loop_scope = "session"
 asyncio_mode = "auto"
@@ -75,7 +75,7 @@ preview = true
 split-on-trailing-comma = false
 
 [tool.uv.build-backend]
-module-name = "syncer"
+module-name = "noaio"
 module-root = ""
 
 [build-system]
