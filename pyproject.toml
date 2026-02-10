@@ -1,0 +1,83 @@
+[project]
+name = "syncer"
+version = "0.1.0"
+description = "Run (some) coroutine functions synchronously."
+readme = "README.md"
+authors = [
+    { name = "Elias Gabriel", email = "oss@eliasfgabriel.com" }
+]
+license = "BSD-3-Clause-Clear"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Typing :: Typed"
+]
+keywords = ["asyncio", "sync", "performance"]
+requires-python = ">=3.10"
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/thearchitector/syncer"
+Repository = "https://github.com/thearchitector/syncer.git"
+Issues = "https://github.com/thearchitector/syncer/issues"
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+    "pytest-cov",
+    "mypy",
+    "ruff",
+    "prek>=0.3.2",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests/"]
+addopts = '-ra -vv --cov=syncer --cov-report=term-missing'
+asyncio_default_fixture_loop_scope = "session"
+asyncio_default_test_loop_scope = "session"
+asyncio_mode = "auto"
+
+[tool.coverage.run]
+branch = true
+
+[tool.coverage.report]
+exclude_also = ["if TYPE_CHECKING:"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+
+[tool.ruff]
+target-version = "py313"
+extend-include = ["*.md"]
+
+[tool.ruff.lint]
+extend-select = ["B", "I", "ASYNC", "TC", "SIM", "PL"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["TC", "F811"]
+
+[tool.ruff.lint.flake8-type-checking]
+strict = true
+quote-annotations = true
+
+[tool.ruff.format]
+skip-magic-trailing-comma = true
+preview = true
+
+[tool.ruff.lint.isort]
+split-on-trailing-comma = false
+
+[tool.uv.build-backend]
+module-name = "syncer"
+module-root = ""
+
+[build-system]
+requires = ["uv_build>=0.9.30,<0.10.0"]
+build-backend = "uv_build"
