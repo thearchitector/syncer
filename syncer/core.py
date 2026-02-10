@@ -36,7 +36,7 @@ def syncify(func: "Callable[P, Coroutine[None, None, T]]") -> "Callable[P, T]":
         coro = func(*args, **kwargs)
         try:
             coro.send(None)
-            raise RuntimeError(
+            raise RuntimeError(  # pragma: no cover
                 "Attempted to complete a syncifiable coroutine, but it did not stop."
             )
         except StopIteration as e:
